@@ -7,4 +7,4 @@
 
 
 To run with c++11 / c++14 / c++17
-g++ -std=c++17  oscillator_final.cpp -o oscillator_final
+g++ -std=c++17  oscillator_extended.cpp -o oscillator_extended
