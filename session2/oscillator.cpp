@@ -1,50 +1,40 @@
+/*****************************************************************
+*  oscillator.cpp : implementation of the Oscillator class
+*****************************************************************/
+ 
 #include <iostream>
+#include "oscillator.h"
 
-class Oscillator
+
+Oscillator::Oscillator(float freq)
 {
-public:
-  Oscillator(float freq){
-    this->freq = freq;
-    std::cout << "\nOscillator - Constructor\n";
-  }
+  this->freq = freq;
+  std::cout << "\nOscillator - Constructor\n";
+}
 
-  ~Oscillator();
-
-  void setFreq(float freq);
-  float getFreq();
-
-private:
-  float freq;
-};
 
 Oscillator::~Oscillator()
 {
-    std::cout << "\nOscillator - Destructor\n";
+    std::cout << "Oscillator - Destructor\n";
 }
+
 
 void Oscillator::setFreq(float freq)
 {
-  std::cout << "\nOscillator - setFreq\n";
+  std::cout << "Oscillator - setFreq\n";
   if(freq < 0 || freq > 22050)
   {
-    std::cout << "ERROR - unable to set the frequency value with value: " << freq << "\n";
+    std::cout << "ERROR - unable to set the frequency to: " << freq << "\n";
     return;
   }
   this->freq = freq;
 }
 
+
 float Oscillator::getFreq()
 {
-  std::cout << "\nOscillator - getFreq\n";
+  std::cout << "Oscillator - getFreq\n";
   return freq;
 }
 
-int main()
-{
-  Oscillator oscillator(220);
-  oscillator.setFreq(440);
-  float frequency = oscillator.getFreq();
-  std::cout << "\nOscillator's frequency: " << frequency <<"\n";
-  // end of main
-  return 0;
-}
+
