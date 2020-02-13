@@ -20,6 +20,7 @@ public:
 	inline void write(float val) { m_buffer[m_writeH] = val; }
 	inline float read() { return m_buffer[m_readH]; }
 
+  // increase write and read heads with 1 or more samples and wrap if necessary
 	inline void incrWriteH() {
 		m_writeH++;
 		wrapH(m_writeH);
@@ -34,6 +35,7 @@ public:
 		wrapH(m_readH);
 	}
 
+  // wrap a head if necessary
 	inline void wrapH(uint& head) {
 		if (head >= m_size) head -= m_size;
 	}
