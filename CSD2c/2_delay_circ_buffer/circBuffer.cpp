@@ -1,5 +1,6 @@
 #include "circBuffer.h"
 #include <iostream>
+#include <cstring>
 
 CircBuffer::CircBuffer() : CircBuffer(0) {}
 
