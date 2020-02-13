@@ -35,9 +35,14 @@ void CircBuffer::releaseBuffer()
 
 void CircBuffer::setDistanceRW(uint distanceRW)
 {
+  // store new distance between R & W heads and update rhead position
 	m_distanceRW = distanceRW;
   m_readH = m_writeH - m_distanceRW + m_size;
   wrapH(m_readH);
+}
+
+uint CircBuffer::getDistanceRW() {
+  return m_distanceRW;
 }
 
 void CircBuffer::logRWPos()

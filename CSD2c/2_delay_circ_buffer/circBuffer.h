@@ -1,4 +1,3 @@
-
 #pragma once
 
 typedef unsigned int uint;
@@ -14,20 +13,13 @@ public:
 	~CircBuffer();
 
 	void resetSize(uint size);
-	void allocateBuffer();
-	void releaseBuffer();
-	// set the distance between read and write head)
+	// setter and getter for the distance between read and write head
 	void setDistanceRW(uint distanceRW);
+  uint getDistanceRW();
 	// write and read values at write / read head
 	inline void write(float val) { m_buffer[m_writeH] = val; }
 	inline float read() { return m_buffer[m_readH]; }
-	inline float readWithOffset(uint offset) {
-		// add read head to offset and
-		offset += m_readH;
-		wrapH(offset);
-		return m_buffer[offset];
-	}
-	inline uint getDistanceRW() { return m_distanceRW; }
+
 	inline void incrWriteH() {
 		m_writeH++;
 		wrapH(m_writeH);
@@ -46,6 +38,8 @@ public:
 		if (head >= m_size) head -= m_size;
 	}
 
+
+
 	// debug methods
 	void logRWPos();
   void logDistanceRW();
@@ -54,6 +48,9 @@ public:
 	void logAllValues();
 
 private:
+  void allocateBuffer();
+  void releaseBuffer();
+
 	float* m_buffer;
 	uint m_size;
 	// read and write heads
